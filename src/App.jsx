@@ -1,25 +1,9 @@
-import { useState,useRef } from "react";
-import NavBar from "./components/NavBar";
 import "./App.css";
-import Events from "./components/events";
-import SignupForm from "./components/SignupForm";
+
+import MyRoutes from "./routes";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const containerRef=useRef();
-
-  const handleNavBarSearch = (term) => {
-    console.log(containerRef.current);
-    setSearchTerm(term);
-  };
-
-  return (
-    <>
-      <NavBar onSearch={handleNavBarSearch} ref={containerRef} />
-      <Events searchTerm={searchTerm} />
-      {/* <SignupForm /> */}
-    </>
-  );
+  return <MyRoutes />;
 }
 
 export default App;

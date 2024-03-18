@@ -1,10 +1,14 @@
 import EventItem from "./components/EventItem";
 
 import useEventsData from "../../hooks/useEventsData";
+import { useNavigate } from "react-router-dom";
 
 const Events = ({ searchTerm }) => {
-  const { events, isLoading,error } = useEventsData();
-  const handleEventItemClick = (id) => {};
+  const { events, isLoading, error } = useEventsData();
+  const navigation = useNavigate();
+  const handleEventItemClick = (id) => {
+    navigation(`/detail/${id}`);
+  };
   const renderEvents = () => {
     let eventsFiltered = events;
     if (searchTerm.length > 0) {
@@ -25,11 +29,11 @@ const Events = ({ searchTerm }) => {
       );
     });
   };
-  if(error){
-    return <div>Ha ocurrido un errror</div>
+  if (error) {
+    return <div>Ha ocurrido un errror</div>;
   }
-  if(isLoading){
-    return <div>Cargando resultado..</div>
+  if (isLoading) {
+    return <div>Cargando resultado..</div>;
   }
   return (
     <div>
